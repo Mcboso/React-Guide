@@ -5,6 +5,7 @@ function ExpenseForm(props) {
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnteredDate] = useState("");
+    
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: "",
     //     enteredAmount: "",
@@ -39,7 +40,8 @@ function ExpenseForm(props) {
         event.preventDefault();
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
+            // 숫자로 변환
             date: new Date(enteredDate),
         };
         props.onSaveExpenseData(expenseData);
@@ -89,6 +91,7 @@ function ExpenseForm(props) {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="button" onClick={props.onCancel}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
