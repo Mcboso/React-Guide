@@ -1,9 +1,11 @@
 import styles from "./AddUser.module.css";
 import Button from "./Button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Card from "../UI/Card";
 
 const AddUser = (props) => {
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
     const [userInput, setUserInput] = useState({
         name: "",
         age: "",
@@ -25,6 +27,8 @@ const AddUser = (props) => {
             name: "",
             age: "",    
         });
+        nameInputRef.currentValue ='';
+        ageInputRef.currentValue ='';
     };
 
     return (
@@ -38,6 +42,7 @@ const AddUser = (props) => {
                         inputChangeHandler("name", event.target.value);
                     }}
                     value={userInput.name}
+                    ref={nameInputRef}
                 />
                 <label htmlFor="age">Age (Years)</label>
                 <input
@@ -47,6 +52,7 @@ const AddUser = (props) => {
                         inputChangeHandler("age", event.target.value);
                     }}
                     value={userInput.age}
+                    ref={ageInputRef}
                 />
                 <Button onClick={submitHandler}>Add User</Button>
             </form>

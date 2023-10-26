@@ -42,7 +42,7 @@ function App() {
     };
 
     return (
-        <div>
+        <React.Fragment>
             <AddUser onAdd={addUserHandler} />
             <UserList data={userList} />
             {error && (
@@ -52,10 +52,7 @@ function App() {
                     onClose={resetError}
                 />
             )}
-            {/* {(blankError || ageError) && (
-                <ErrorModal blank={blankError} lowAge={ageError} onClose={resetError}/>
-            )} */}
-        </div>
+        </React.Fragment>
     );
 }
 
