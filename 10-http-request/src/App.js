@@ -17,7 +17,9 @@ function App() {
       if (!response.ok) {
         throw new Error("Something went wrong");
       }
+      console.log(response);
       const data = await response.json();
+      console.log(data);
       const loadedMovies = [];
       for (const key in data) {
         loadedMovies.push({
