@@ -1,8 +1,16 @@
 import classes from './EventItem.module.css';
+import { Link, useSubmit } from 'react-router-dom';
 
 function EventItem({ event }) {
+  const submit = useSubmit();
   function startDeleteHandler() {
-    // ...
+    const proceed = window.confirm('Are you sure?');
+
+    if(proceed) {
+      submit(null, {method: 'delete'}); 
+      // <Form> 없이 action을 trigger하는 방법 (첫번째 인자는 전달할 데이터, 두번째 인자는 action 세팅)
+    }
+
   }
 
   return (
@@ -12,7 +20,7 @@ function EventItem({ event }) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <a href="edit">Edit</a>
+        <Link to="edit">Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>
